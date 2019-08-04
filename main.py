@@ -27,6 +27,7 @@ def show_index():
     # b64 = b64.decode("utf-8")
     image = Image.open(BytesIO(base64.b64decode(b64)))
     image.save("./static/camera/temp.jpg")
+    redis_image.delete("image")
     full_filename = os.path.join(app.config['UPLOAD_FOLDER'], "temp.jpg")
     # img = np.array(image)
     # print(img)
